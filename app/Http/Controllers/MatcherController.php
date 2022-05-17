@@ -26,7 +26,7 @@ class MatcherController extends Controller
 
             //Check strict matching fields
             foreach ($profile->searchFields as $key => $profile_fields) {
-                $property_field = $property->fields[$key]; //price
+                $property_field = $property->fields[$key];
 
                 // check for strict or loose match
                 if (is_array($profile_fields)) {
@@ -55,7 +55,7 @@ class MatcherController extends Controller
 
                         } else {
                             // Apply a 25% variation to search fields
-                            $twentyfive = ceil(25 / 100);
+                            $twentyfive = 25 / 100;
                             $max = $twentyfive * $max;
                             $max = $twentyfive + $max;
 
