@@ -93,9 +93,6 @@ class MatcherController extends Controller
             // Remove results with miss matching fields
             $intersects = array_intersect(array_keys($property->fields), array_keys($profile->searchFields));
 
-            \Log::debug('Checking if ' . print_r(array_keys($property->fields), true) . ' intersects with ' . print_r(array_keys($profile->searchFields), true));
-            \Log::debug('Answer is ' . count($intersects));
-
             return count($intersects) === 0;
         });
 
