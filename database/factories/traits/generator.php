@@ -82,8 +82,8 @@ trait Generator
         })->toArray();
         $construction_years = array(min($construction_years), max($construction_years));
 
-        $rooms = array(rand(1, 20), rand(20, 50), null);
-        $rooms = collect($rooms)->random(2)->sort(function ($a, $b) {
+        $rooms = range(10, 100, 10);
+        $room = collect($rooms)->random(2)->sort(function ($a, $b) {
             return $a > $b ? 1 : -1;
         })->toArray();
 
@@ -96,7 +96,7 @@ trait Generator
             return array(
                 'area' => $area[rand(0, 1)],
                 'yearOfConstruction' => $years[rand(0, count($years) - 1)],
-                'rooms' => $rooms[rand(0, count($rooms) - 1)],
+                'rooms' => $room[rand(0, count($room) - 1)],
                 'heatingType' => $heating[rand(0, 1)],
                 'parking' => $parking[rand(0, 1)],
                 'returnActual' => $returnActual[rand(0, 1)],
@@ -107,7 +107,7 @@ trait Generator
                 'price' => $price,
                 'area' => $area,
                 'yearOfConstruction' => $construction_years,
-                'rooms' => $rooms,
+                'rooms' => $room,
                 'returnActual' => $returnActual
             );
         }
