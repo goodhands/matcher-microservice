@@ -72,4 +72,18 @@ class SearchProfileMatchTest extends TestCase
 
         $this->assertEmpty($this->repository->getCheckedItems());
     }
+
+    public function test_add_strict_score()
+    {
+        $this->repository->addScore('strict');
+        $this->assertEquals($this->repository->getScore(), $this->repository::STRICTSCORE);
+        $this->assertEquals($this->repository->getStrictMatches(), 1);
+    }
+
+    public function test_add_loose_score()
+    {
+        $this->repository->addScore('loose');
+        $this->assertEquals($this->repository->getScore(), $this->repository::LOOSESCORE);
+        $this->assertEquals($this->repository->getLooseMatches(), 1);
+    }
 }
